@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jeremy & Júlia - 9 de Novembro de 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--rosa:#fdeef3;--rosa2:#f8dfe8;--dourado:#b9975b;--marrom:#6b4a2f;--texto:#4a3b3b}
+body{font-family:'Montserrat',sans-serif;background:#e8d8dd;color:var(--texto)}
+h2{font-family:'Cormorant Garamond',serif;font-size:32px;letter-spacing:3px;text-align:center;color:var(--marrom);font-weight:600}
+.script{font-family:'Great Vibes',cursive;font-size:52px;color:var(--dourado);text-align:center;line-height:1}
+.center{text-align:center}
+section{background:var(--rosa);max-width:480px;margin:0 auto;padding:42px 22px;border-bottom:1px solid #ead5dc}
+
+/* ===== CAPA - FOTO CASAL + LACRE ===== */
+#capa{position:fixed;inset:0;z-index:100;background:url('IMG_2145.jpeg') center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:opacity .8s, visibility .8s}
+#capa::before{content:'';position:absolute;inset:0;background:rgba(0,0,0,.25)}
+#capa.aberta{opacity:0;visibility:hidden}
+#capa p{position:relative;color:#fff;font-size:13px;letter-spacing:1px;margin-bottom:22px;text-align:center;padding:0 20px;text-shadow:0 1px 8px rgba(0,0,0,.6)}
+/* LACRE - SÓ O SELO */
+#lacre{position:relative;width:110px;height:110px;border:none;cursor:pointer;background:radial-gradient(circle at 35% 30%, #e8b25a, #b7791f 55%, #7a4a0a);border-radius:50%;box-shadow:0 8px 25px rgba(0,0,0,.45), inset 0 0 0 5px rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;animation:pulse 1.8s infinite}
+#lacre::before{content:'';position:absolute;width:96px;height:96px;border:1.5px solid rgba(255,255,255,.55);border-radius:50%}
+#lacre span{font-family:'Great Vibes',cursive;font-size:58px;color:#fff;text-shadow:0 2px 4px rgba(0,0,0,.3)}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+#lacre small{position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);white-space:nowrap;color:#fff;font-size:11px;letter-spacing:1px;text-shadow:0 1px 5px #000}
+
+/* ===== CONTAGEM ===== */
+#contagem{display:flex;justify-content:center;gap:10px;margin-top:18px}
+#contagem div{background:#fff;border:1px solid #ead5dc;border-radius:12px;padding:12px 8px;min-width:62px;text-align:center}
+#contagem b{font-size:24px;color:var(--marrom);display:block}
+#contagem span{font-size:10px;letter-spacing:1px}
+
+/* ===== CARROSSEL ===== */
+.carrossel{position:relative;overflow:hidden;border-radius:18px;height:380px;margin-top:18px;box-shadow:0 10px 30px rgba(0,0,0,.15)}
+.carrossel img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1s}
+.carrossel img.ativa{opacity:1}
+.bolinhas{display:flex;justify-content:center;gap:7px;margin-top:12px}
+.bolinhas i{width:8px;height:8px;border-radius:50%;background:#d9b8c2;display:block;cursor:pointer}
+.bolinhas i.ativa{background:var(--dourado);transform:scale(1.3)}
+
+/* ===== CRONOGRAMA ===== */
+.timeline{position:relative;margin:24px auto 0;max-width:300px;padding-left:28px;border-left:2px solid #d9b8c2}
+.timeline div{position:relative;margin-bottom:18px;font-size:13px;letter-spacing:1px}
+.timeline div::before{content:'';position:absolute;left:-35px;top:2px;width:12px;height:12px;background:var(--dourado);border-radius:50%;border:2px solid #fff}
+
+/* ===== DRESS CODE ===== */
+.dress{display:flex;gap:12px;justify-content:center;margin:16px 0}
+.dress img{width:48%;height:180px;object-fit:cover;border-radius:14px}
+.aviso{font-size:12px;line-height:1.7;background:#fff;padding:14px;border-radius:12px;margin-top:12px}
+
+/* ===== PRESENTES ===== */
+.btn{display:block;width:100%;max-width:260px;margin:14px auto 0;background:var(--marrom);color:#fff;border:none;padding:13px;border-radius:30px;font-size:13px;letter-spacing:1px;cursor:pointer}
+.caixa{background:#fff;border-radius:14px;padding:16px;margin-top:14px;font-size:13px;line-height:1.6}
+.caixa b{color:var(--marrom)}
+
+/* ===== MANUAL ===== */
+.manual{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+.manual div{background:#fff;border:1px solid #ead5dc;border-radius:12px;padding:14px 8px;text-align:center;font-size:11px;letter-spacing:.5px;line-height:1.4}
+.manual span{font-size:20px;display:block;margin-bottom:6px}
+
+/* ===== FAQ ===== */
+details{background:#fff;border-radius:12px;padding:13px 15px;margin-top:10px;font-size:13px;cursor:pointer}
+details summary{list-style:none;font-weight:500}
+details p{margin-top:8px;color:#777;line-height:1.6}
+
+/* ===== RSVP ===== */
+input,select,textarea{width:100%;padding:12px;border:1px solid #e0c8d0;border-radius:10px;margin-top:10px;font-family:inherit;font-size:13px;background:#fff}
+label{font-size:11px;letter-spacing:1px;margin-top:16px;display:block;color:var(--marrom)}
+footer{text-align:center;font-size:11px;letter-spacing:2px;padding:20px;color:#999;background:#fff}
+</style>
+</head>
+<body>
+
+<!-- CAPA COM FOTO DO CASAL NO FUNDO + SÓ O LACRE -->
+<div id="capa">
+  <p>Clique no lacre para abrir o convite</p>
+  <button id="lacre"><span>J</span><small>Jeremy & Júlia</small></button>
+</div>
+
+<!-- 1. APRESENTAÇÃO -->
+<section>
+  <p class="center" style="font-size:11px;letter-spacing:2px">CONTAGEM DECRESCENTE</p>
+  <div id="contagem">
+    <div><b id="d">00</b><span>DIAS</span></div>
+    <div><b id="h">00</b><span>HORAS</span></div>
+    <div><b id="m">00</b><span>MIN</span></div>
+    <div><b id="s">00</b><span>SEG</span></div>
+  </div>
+  <p class="center" style="margin-top:26px;font-size:11px;letter-spacing:2px">COM A BENÇÃO DE DEUS E SUAS FAMÍLIAS</p>
+  <p class="center" style="margin-top:12px;line-height:1.8;font-size:13px">Fausto Gomes Teixeira<br>Laurinda Gomes Teixeira<br>Tobias Sandro Magalhães<br>Samanta de Sousa</p>
+  <p class="center" style="margin-top:14px;font-size:11px;letter-spacing:1px">ANUNCIAM COM ALEGRIA O CASAMENTO DE SEUS FILHOS</p>
+  <p class="script" style="margin-top:10px">Jeremy & Júlia</p>
+  <p class="center" style="margin-top:16px;font-size:12px">O que se realizará no dia</p>
+  <h2 style="margin-top:6px">9 de Novembro de 2026</h2>
+  <p class="center" style="font-size:13px;margin-top:4px">Segunda-feira, 10h</p>
+</section>
+
+<!-- 2. GALERIA - CARROSSEL GIRANDO -->
+<section>
+  <h2>NOSSA GALERIA</h2>
+  <div class="carrossel" id="carrossel">
+    <img src="IMG_2145.jpeg" class="ativa" alt="Foto 1">
+    <img src="IMG_2146.jpeg" alt="Foto 2">
+    <img src="IMG_2147.jpeg" alt="Foto 3">
+    <img src="IMG_2148.jpeg" alt="Foto 4">
+    <img src="IMG_2149.jpeg" alt="Foto 5">
+    <img src="IMG_2150.jpeg" alt="Foto 6">
+  </div>
+  <div class="bolinhas" id="bolinhas"></div>
+</section>
+
+<!-- 3. CRONOGRAMA -->
+<section>
+  <h2>CRONOGRAMA</h2>
+  <div class="timeline">
+    <div>CERIMÓNIA RELIGIOSA</div>
+    <div>COPO DE ÁGUA</div>
+    <div>ENTRADA DOS NOIVOS</div>
+    <div>JANTAR</div>
+    <div>CERIMÓNIA / BRINDE</div>
+    <div>FESTA E ANIMAÇÃO</div>
+    <div>FIM DO EVENTO</div>
+  </div>
+</section>
+
+<!-- 4. DRESS CODE -->
+<section>
+  <h2>DRESS CODE</h2>
+  <p class="center" style="letter-spacing:3px;font-size:12px;margin-top:6px">FORMAL</p>
+  <p class="center" style="font-size:13px;line-height:1.7;margin-top:12px">Vista-se para uma noite de elegância, romance e sofisticação, com cores suaves, tecidos fluidos e um toque de brilho para realçar a noite.</p>
+  <p style="font-size:12px;margin-top:16px"><b>SENHORAS:</b> Vestidos longos, em cores suaves</p>
+  <div class="dress">
+    <img src="IMG_2147.jpg" alt="Senhoras">
+    <img src="IMG_2148.jpg" alt="Senhoras 2">
+  </div>
+  <div class="aviso">Pedimos gentilmente que evitem o uso de branco, champanhe e cores claras, reservado exclusivamente ao noivo. Não é permitido o uso de blazer com calças pretas, sapatos sociais ou ténis. O uso de blazer com calça social é obrigatório.</div>
+  <p style="font-size:12px;margin-top:14px"><b>SENHORES:</b> Fato escuro / Terno</p>
+</section>
+
+<!-- 5. PRESENTES -->
+<section>
+  <h2>PRESENTES</h2>
+  <p style="font-size:13px;line-height:1.7;margin-top:14px;text-align:center">A sua presença no nosso casamento já é o melhor presente que poderíamos receber! Mas para quem quiser nos mimar um pouco mais, preparamos com carinho uma pequena lista de presentes, para ajudar na construção da nossa nova vida.</p>
+  <p style="font-size:13px;line-height:1.7;margin-top:10px;text-align:center">Com a sua ajuda, cada presente escolhido nos aproxima um pouco mais do lar dos nossos sonhos.</p>
+  <button class="btn" onclick="alert('Lista de Presentes - em breve')">Ver Lista</button>
+  <div class="caixa">
+    <b>Transferência Bancária</b><br>
+    Nome: Jeremy & Júlia<br>
+    IBAN: <span id="iban">AO06 0000 0000 0000 0000 0000</span><br>
+    <button class="btn" style="margin-top:10px;padding:9px" onclick="navigator.clipboard.writeText(document.getElementById('iban').innerText);alert('IBAN copiado!')">Copiar</button>
+  </div>
+</section>
+
+<!-- 6. MANUAL -->
+<section>
+  <h2>MANUAL DO BOM CONVIDADO</h2>
+  <div class="manual">
+    <div><span>✅</span>CONFIRME SUA PRESENÇA</div>
+    <div><span>⏰</span>SEJA PONTUAL</div>
+    <div><span>🤍</span>BRANCO É COR DA NOIVA</div>
+    <div><span>⛪</span>PARTICIPE DA CERIMÓNIA</div>
+    <div><span>✉️</span>CONVIDADO NÃO CONVIDA</div>
+    <div><span>👶</span>NÃO LEVE CRIANÇAS</div>
+    <div><span>📸</span>NÃO ATRAPALHE O FOTÓGRAFO</div>
+    <div><span>📷</span>TIRE MUITAS FOTOS</div>
+    <div><span>🥳</span>DIVIRTA-SE MUITO</div>
+    <div><span>👔</span>NÃO VÁ INFORMAL</div>
+  </div>
+</section>
+
+<!-- 7. PERGUNTAS -->
+<section>
+  <h2>PERGUNTAS FREQUENTES</h2>
+  <details><summary>Podemos levar crianças?</summary><p>Pedimos gentilmente que não levem crianças, para que todos possam aproveitar a noite.</p></details>
+  <details><summary>Tem estacionamento?</summary><p>Sim, o local possui estacionamento para os convidados.</p></details>
+  <details><summary>Posso enviar alguém no meu lugar?</summary><p>Por favor confirme connosco antes, pois o convite é pessoal e intransmissível.</p></details>
+</section>
+
+<!-- 8. CONFIRMAR PRESENÇA -->
+<section>
+  <h2>CONFIRMAR PRESENÇA</h2>
+  <form onsubmit="event.preventDefault();alert('Obrigado! Presença confirmada ❤️');">
+    <label>NOME *</label><input required placeholder="O seu nome completo">
+    <label>ACOMPANHANTE</label><input placeholder="Nome do acompanhante">
+    <label>IRÁ COMPARECER? *</label>
+    <select required><option value="">Escolha...</option><option>Sim, estarei lá</option><option>Não poderei ir</option></select>
+    <label>MENSAGEM</label><textarea rows="3" placeholder="Deixe uma mensagem para os noivos..."></textarea>
+    <button class="btn" type="submit">Confirmar</button>
+  </form>
+</section>
+
+<footer>CONVITES DIGITAIS • DIGITAL INVITATION • PREMIUM<br>Jeremy & Júlia • 09.11.2026</footer>
+
+<script>
+// Abrir convite no lacre
+document.getElementById('lacre').onclick = () => document.getElementById('capa').classList.add('aberta');
+
+// Contagem decrescente para 9 Nov 2026 10h
+const alvo = new Date('2026-11-09T10:00:00').getTime();
+function atualizar(){
+  const dif = alvo - Date.now();
+  const dias = Math.floor(dif/(1000*60*60*24));
+  const horas = Math.floor((dif%(1000*60*60*24))/(1000*60*60));
+  const min = Math.floor((dif%(1000*60*60))/(1000*60));
+  const seg = Math.floor((dif%(1000*60))/1000);
+  document.getElementById('d').innerText = String(dias).padStart(2,'0');
+  document.getElementById('h').innerText = String(horas).padStart(2,'0');
+  document.getElementById('m').innerText = String(min).padStart(2,'0');
+  document.getElementById('s').innerText = String(seg).padStart(2,'0');
+}
+setInterval(atualizar,1000); atualizar();
+
+// Carrossel girando sozinho
+const imgs = document.querySelectorAll('#carrossel img');
+const bolinhasDiv = document.getElementById('bolinhas');
+let atual = 0;
+imgs.forEach((_,i)=>{
+  const b = document.createElement('i');
+  if(i===0) b.classList.add('ativa');
+  b.onclick = ()=>mostrar(i);
+  bolinhasDiv.appendChild(b);
+});
+const bolinhas = document.querySelectorAll('#bolinhas i');
+function mostrar(i){
+  imgs[atual].classList.remove('ativa'); bolinhas[atual].classList.remove('ativa');
+  atual = i;
+  imgs[atual].classList.add('ativa'); bolinhas[atual].classList.add('ativa');
+}
+setInterval(()=>mostrar((atual+1)%imgs.length), 3500);
+</script>
+</body>
+</html>
